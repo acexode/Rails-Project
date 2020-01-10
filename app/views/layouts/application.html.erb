@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SessionPractice</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>    
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    
+    </head>  
+
+  <body>
+  
+  <div class="site-header d-flex flex-md-row align-items-center p-3 px-md-4  border-bottom box-shadow">
+      <a class="my-0 mr-md-auto font-weight-normal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+      </a>
+        <nav class="my-2 my-md-0 mr-md-3">
+         <a class="py-2 text-dark mr-3" <%= link_to  "Home", '/' %></a>
+
+        <% if current_user %>
+             <%= link_to "Dashboard", '/dashboard', class: "py-2 text-dark mr-3" %>  
+            Welcome <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+          <% else %>          
+          <%= link_to "Login", '/login', class: "py-2 text-dark mr-3" %> 
+          <%= link_to "SIGN UP", '/signup', class: "btn btn-outline-primary mr-3" %>
+          <% end %> 
+       
+      </nav>
+      
+    </div>    
+
+  <div class="container mt-5 mb-5">
+    <%= yield %>
+  </div>
+  </body>
+</html>
+
