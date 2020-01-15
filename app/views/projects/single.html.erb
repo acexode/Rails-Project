@@ -1,0 +1,9 @@
+ <div class="blog-post">
+            <h2 class="blog-post-title"><%= @project.title %></h2>
+            <p class="blog-post-meta"><%= @project.created_at.strftime("%m/%d/%Y") %> by Mr<a href="#"><%= @project.user_id %></a></p>
+
+            <p><%= @project.description %></p>
+            <hr>
+            <p><%= @project.content %></p>
+           
+</div>

@@ -5,8 +5,9 @@ class SessionsController < ApplicationController
   end
 
   def dashboard
+    @users = User.all
     @user = User.find(session[:user_id])
-     @projects = Project.where(["user_id = ?",  @user[:id]])
+    @projects = Project.where(["user_id = ?",  @user[:id]])
     
   end
 
@@ -22,7 +23,13 @@ class SessionsController < ApplicationController
 
     end
   end
-
+  def destroy
+    render plain: params.inspect
+    # @project = Project.find()
+    # @user.destroy
+    # redirect_to users_path
+    
+  end
   def logout
     session[:user_id] = nil
     redirect_to '/login'

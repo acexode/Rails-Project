@@ -4,10 +4,14 @@ class ProjectsController < ApplicationController
      @projects = Project.all
      
   end
+  
+  def single 
+    @project = Project.find(params[:id])  
+     
+  end
 
   def create      
-    @project = current_user.projects.build(project_params)
-  
+    @project = current_user.projects.build(project_params)  
     if @project.save      
       redirect_to '/'
     else
@@ -16,10 +20,20 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def update
+  def edit
+    @project = Project.find(params[:id])  
   end
 
-  def delete
+  def update
+    @project = Project.find(params[:id])     
+    @project.update(project_params)
+    redirect_to '/dashboard'
+  end
+
+  def destroy    
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to '/dashboard'
   end
   private
     def project_params
